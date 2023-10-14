@@ -1,9 +1,9 @@
 ---
 import { changeLanguage, t } from "i18next";
-import Layout from "../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { localizePath } from "astro-i18next";
 
-changeLanguage("en");
+changeLanguage("es");
 
 const languages = {
     en: t("languages.title_en"),
@@ -45,7 +45,7 @@ const languages = {
 </Layout>
 <style></style>
 <script>
-	import { soundManager } from "../sounds/soundManager";
+	import { soundManager } from "../../sounds/soundManager";
 
 	const linkSignup = document.querySelector("#link-signup");
 	const linkSignin = document.querySelector("#link-signin");

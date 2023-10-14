@@ -1,0 +1,87 @@
+---
+import { changeLanguage, t } from "i18next";
+import Layout from "../../../layouts/Layout.astro";
+import { localizePath } from "astro-i18next";
+
+changeLanguage("es");
+---
+
+<Layout>
+	<main
+		class="p-2 w-screen h-screen flex justify-center items-center flex-col"
+	>
+		<h1 class="italic text-2xl">{t("auth.signin.title")}</h1>
+		<form id="signup" class="p-2 flex flex-col items-center justify-center">
+			<div class="p-4">
+				<label for="email"
+					>{t("auth.signin.fields.email")}
+					<input
+						class="border border-blue-400 block p-1"
+						type="email"
+						name="email"
+						id="email"
+						required
+					/>
+				</label>
+			</div>
+			<div class="p-4">
+				<label for="password"
+					>{t("auth.signup.fields.pwd")}
+
+					<input
+						class="border border-blue-400 block p-1"
+						type="password"
+						name="password"
+						id="password"
+						required
+					/>
+				</label>
+			</div>
+			<small class="block p-2 m-2 underline text-blue-400">
+				<a href={localizePath("/auth/signup")}
+					>{t("auth.signin.link")}</a
+				></small
+			>
+			<button
+				class="p-2 border rounded-md border-blue-800"
+				id="button-send">{t("auth.signin.button_send")}</button
+			>
+		</form>
+	</main>
+</Layout>
+
+<script>
+	import supabase from "../../../supabase/client";
+
+	(async () => {
+		const { data } = await supabase.auth.getSession();
+		if (data.session) {
+			window.location.href = "/dashboard/home";
+		}
+	})();
+
+	const btnSend = document.querySelector("#button-send");
+	const form = document.querySelector("form");
+
+	async function handleSubmit(event) {
+		event.preventDefault();
+		const formData = new FormData(form);
+		const email = formData.get("email") as string;
+		const password = formData.get("password") as string;
+
+		const { data, error } = await supabase.auth.signInWithPassword({
+			email,
+			password,
+		});
+
+		if (data) {
+			window.location.href = "/dashboard/home";
+		} else {
+			console.log(error);
+		}
+	}
+
+	btnSend.addEventListener("click", (event) => {
+		handleSubmit(event);
+	});
+</script>

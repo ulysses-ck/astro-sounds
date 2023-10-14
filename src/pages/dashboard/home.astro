@@ -1,0 +1,45 @@
+---
+import { changeLanguage, t } from "i18next";
+import Profile from "../../components/Profile.astro";
+import Layout from "../../layouts/Layout.astro";
+
+changeLanguage("en");
+---
+
+<Layout>
+	<main>
+		<nav class="flex justify-between p-2">
+			<h1 class="text-2xl">{t("dashboard.title")}</h1>
+			<button
+				id="btn-logout"
+				class="border-2 rounded-md p-2 border-yellow-400"
+				>{t("dashboard.button_logout")}</button
+			>
+		</nav>
+
+		<Profile />
+	</main>
+</Layout>
+<script>
+	import { soundManager } from "../../sounds/soundManager";
+	import supabase from "../../supabase/client";
+
+	(async () => {
+		const { data } = await supabase.auth.getSession();
+		if (!data.session) {
+			window.location.href = "/auth/signin";
+		}
+	})();
+
+	const btnLogout = document.querySelector("#btn-logout");
+
+	btnLogout.addEventListener("click", async () => {
+		soundManager("click");
+
+		const { error } = await supabase.auth.signOut();
+
+		if (!error) {
+			window.location.href = "/auth/signin";
+		}
+	});
+</script>

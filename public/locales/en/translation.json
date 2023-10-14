@@ -1,0 +1,33 @@
+{
+	"landing": {
+		"brand": "Dev",
+		"anchors": { "signin": "Sign in", "signup": "Sign up" }
+	},
+	"auth": {
+		"createProfile": {
+			"title": "Setup profile",
+			"fields": { "usr": "Username", "fname": "Fullname" }
+		},
+		"signin": {
+			"title": "Good to see you again!",
+			"fields": { "email": "Email", "pwd": "Password" },
+			"link": "Do you want to create a new account?",
+			"button_send": "Sign in"
+		},
+		"signup": {
+			"title": "Join us right now!",
+			"fields": { "email": "Email", "pwd": "Password" },
+			"link": "Already have a registered account?",
+			"button_send": "Register"
+		}
+	},
+	"dashboard": {
+		"title": "Dashboard",
+		"button_logout": "Log out"
+	},
+	"languages": {
+		"title_en": "English",
+		"title_es": "Spanish",
+		"title_lang": "Language"
+	}
+}
