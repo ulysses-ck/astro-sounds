@@ -2,12 +2,13 @@
 import { changeLanguage, t } from "i18next";
 import Layout from "../layouts/Layout.astro";
 import { localizePath } from "astro-i18next";
+import FirstReactComponent from "../components/FirstReactComponent";
 
 changeLanguage("en");
 
 const languages = {
-    en: t("languages.title_en"),
-    es: t("languages.title_es"),
+	en: t("languages.title_en"),
+	es: t("languages.title_es"),
 };
 ---
 
@@ -21,7 +22,8 @@ const languages = {
 					id="language"
 					class="border-2 rounded-md"
 				>
-					<option disabled selected>{t("languages.title_lang")}</option
+					<option disabled selected
+						>{t("languages.title_lang")}</option
 					>
 					{
 						Object.keys(languages).map((option) => (
@@ -41,6 +43,8 @@ const languages = {
 				>
 			</div>
 		</nav>
+
+		<FirstReactComponent />
 	</main>
 </Layout>
 <style></style>
