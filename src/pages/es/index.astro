@@ -1,49 +1,17 @@
 ---
-import { changeLanguage, t } from "i18next";
+import { changeLanguage } from "i18next";
 import Layout from "../../layouts/Layout.astro";
-import { localizePath } from "astro-i18next";
+import Nav from "../../components/Nav.jsx";
 
 changeLanguage("es");
-
-const languages = {
-    en: t("languages.title_en"),
-    es: t("languages.title_es"),
-};
 ---
 
 <Layout>
 	<main class="p-2">
-		<nav class="flex justify-between">
-			<h1 class="text-black text-3xl italic">{t("landing.brand")}</h1>
-			<div class="p-2 flex gap-2">
-				<select
-					name="language"
-					id="language"
-					class="border-2 rounded-md"
-				>
-					<option disabled selected>{t("languages.title_lang")}</option
-					>
-					{
-						Object.keys(languages).map((option) => (
-							<option value={option}>{languages[option]}</option>
-						))
-					}
-				</select>
-				<a
-					class="border-2 rounded-md p-2 border-yellow-400"
-					href={localizePath("/auth/signup")}
-					id="link-signup">{t("landing.anchors.signup")}</a
-				>
-				<a
-					class="border-2 rounded-md p-2 border-yellow-400"
-					href={localizePath("/auth/signin")}
-					id="link-signin">{t("landing.anchors.signin")}</a
-				>
-			</div>
-		</nav>
+		<Nav client:load />
 	</main>
 </Layout>
-<style></style>
+
 <script>
 	import { soundManager } from "../../sounds/soundManager";
 
@@ -57,7 +25,6 @@ const languages = {
 	linkSignup.addEventListener("mouseover", () => {
 		soundManager("hover");
 	});
-
 	selectLanguage.addEventListener("click", () => {
 		soundManager("click");
 	});
