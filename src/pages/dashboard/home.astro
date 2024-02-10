@@ -1,13 +1,13 @@
 ---
 import { changeLanguage, t } from "i18next";
-import Profile from "../../components/Profile.astro";
+import Profile from "../../components/Profile.jsx";
 import Layout from "../../layouts/Layout.astro";
 
 changeLanguage("en");
 ---
 
 <Layout>
-	<main>
+	<main class="p-2">
 		<nav class="flex justify-between p-2">
 			<h1 class="text-2xl">{t("dashboard.title")}</h1>
 			<button
@@ -17,7 +17,7 @@ changeLanguage("en");
 			>
 		</nav>
 
-		<Profile />
+		<Profile client:load/>
 	</main>
 </Layout>
 <script>

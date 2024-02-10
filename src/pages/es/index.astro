@@ -30,9 +30,9 @@ changeLanguage("es");
 	});
 
 	selectLanguage.addEventListener("change", () => {
-		if (!(selectLanguage.value === "es")) {
+		if (selectLanguage.value === "en") {
 			window.location.href = "/";
-		} else {
+		} else if(selectLanguage.value === "es") {
 			window.location.href = "/es";
 		}
 	});

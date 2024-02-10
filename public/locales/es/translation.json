@@ -23,7 +23,10 @@
 	},
 	"dashboard": {
 		"title": "Panel administrador",
-		"button_logout": "Cerrar sesión"
+		"button_logout": "Cerrar sesión",
+		"title_fname": "Cuenta de",
+		"title_user": "Usuario",
+		"title_email": "Correo electrónico"
 	},
 	"languages": {
 		"title_en": "Inglés",

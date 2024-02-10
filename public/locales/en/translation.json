@@ -23,7 +23,10 @@
 	},
 	"dashboard": {
 		"title": "Dashboard",
-		"button_logout": "Log out"
+		"button_logout": "Log out",
+		"title_fname": "Account's",
+		"title_user": "Username",
+		"title_email": "Email"
 	},
 	"languages": {
 		"title_en": "English",

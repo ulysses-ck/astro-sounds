@@ -2,6 +2,7 @@
 import { changeLanguage } from "i18next";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.jsx";
+import Profile from "../components/Profile";
 
 changeLanguage("en");
 ---
@@ -30,9 +31,9 @@ changeLanguage("en");
 	});
 
 	selectLanguage.addEventListener("change", () => {
-		if (!(selectLanguage.value === "es")) {
+		if (selectLanguage.value === "en") {
 			window.location.href = "/";
-		} else {
+		} else if(selectLanguage.value === "es") {
 			window.location.href = "/es";
 		}
 	});
